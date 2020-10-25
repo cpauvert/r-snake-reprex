@@ -17,6 +17,9 @@ if(length(snakemake@params) > 0 ){
     message("No optional parameters. Using defaults parameters from base::plot()")
 }
 
+message("printing snakemake@params")
+print(snakemake@params)
+
 # Plot and Save
 png(snakemake@output[[1]])
 do.call(plot, args)
