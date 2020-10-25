@@ -4,6 +4,9 @@ args<-list(
            )
 # Check if extra params are passed
 if(length(snakemake@params) > 0 ){
+       if(length(snakemake@params[[1]]) == 0 ){
+           message("No optional parameters. Using defaults parameters from base::plot()")
+       }
        if(is.list(snakemake@params[[1]])){
            # Add them to the list of arguments
            args<-c(args,snakemake@params[[1]])
