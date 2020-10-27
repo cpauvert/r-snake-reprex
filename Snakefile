@@ -3,6 +3,8 @@ rule r_empty:
         "vector.RDS"
     output:
         "plot.png"
+    log:
+        "logme.log"
     conda:
         "env.yaml"
     script:

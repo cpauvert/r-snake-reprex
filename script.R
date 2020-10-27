@@ -1,3 +1,8 @@
+# Sink the stderr and stdout to the snakemake log file
+log.file<-file(snakemake@log[[1]],open="wt")
+sink(log.file)
+sink(log.file,type="message")
+
 # Prepare arguments (no matter the order)
 args<-list(
            x = readRDS(snakemake@input[[1]])
