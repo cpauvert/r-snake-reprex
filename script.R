@@ -8,17 +8,15 @@ args<-list(
            x = readRDS(snakemake@input[[1]])
            )
 # Check if extra params are passed
-if(length(snakemake@params) > 0 ){
-       if(length(snakemake@params[[1]]) == 0 ){
-           message("No optional parameters. Using defaults parameters from base::plot()")
-       }
-       if(is.list(snakemake@params[[1]])){
+if(length(snakemake@params) > 0 || snakemake@params[["extra"]]!=''){
+       extra<-eval(parse(text=snakemake@params[["extra"]]))
+       if(is.list(extra)){
            # Add them to the list of arguments
-           args<-c(args,snakemake@params[[1]])
+           args<-c(args, extra)
        } else{
-           message("Optional R parameters should be passed as Python dictionary")
+           message("Optional R parameters should be passed as a string list")
            message("in the Snakefile. Check the example below:")
-           message("\tparams: { 'verbose': True, 'foo': [1,42] }")
+           message("params:\n\textra='list(verbose=TRUE, foo=c(1,42) )")
            message("Using defaults parameters from base::plot()")
        }
 } else{
