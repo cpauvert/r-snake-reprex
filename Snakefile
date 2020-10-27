@@ -17,6 +17,8 @@ rule r_default:
         {}
     output:
         "plot-default.png"
+    log:
+        "logme-default.log"
     conda:
         "env.yaml"
     script:
@@ -29,6 +31,8 @@ rule r_params:
         {'ylab':"Side caption", 'ylim':[25,75]}
     output:
         "plot-params.png"
+    log:
+        "logme-params.log"
     conda:
         "env.yaml"
     script:
