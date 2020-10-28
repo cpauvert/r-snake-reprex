@@ -38,3 +38,24 @@ rule r_params:
     script:
         "script.R"
 
+rule search:
+    input:
+        needle="needle.txt", haystack="haystack.txt"
+    output:
+        dynamic("search.done")
+    log:
+        "logsearch.log"
+    conda:
+        "env.yaml"
+    script:
+        "search.R"
+
+rule search_bis:
+    input:
+        needle="needle.txt"
+    output:
+        dynamic("searchoption.done")
+    log:
+        "logsearch.log"
+    script:
+        "search.R"
