@@ -28,7 +28,7 @@ rule r_params:
     input:
         "vector.RDS"
     params:
-        extra='list(ylab="Side caption", ylim=c(25,75))'
+        ylab="Side caption", ylim=[25,75]
     output:
         "plot-params.png"
     log:
